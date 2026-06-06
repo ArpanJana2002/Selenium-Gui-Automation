@@ -227,3 +227,7 @@ mvn clean test
 GitHub:
 https://github.com/ArpanJana2002
 
+## Live Automation Demo
+
+ Full Automation Execution Video
+https://github.com/ArpanJana2002/Selenium-Gui-Automation/releases/tag/v1.0.0
