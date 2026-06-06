@@ -1,0 +1,60 @@
+# Maven
+target/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Test Output
+test-output/
+surefire-reports/
+
+# Screenshots
+screenshots/
+reports/
+extent-report/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+# Environment Files
+.env
+
+# Driver Binaries
+chromedriver.exe
+geckodriver.exe
+msedgedriver.exe
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Selenium Videos
+videos/
+
+# Archive Files
+*.zip
+*.rar
+
+# Generated Reports
+allure-results/
+allure-report/
+
+# Maven Wrapper Jar
+.mvn/wrapper/maven-wrapper.jar
