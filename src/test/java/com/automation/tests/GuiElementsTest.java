@@ -8,7 +8,15 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.automation.base.BaseTest;
-import com.automation.pages.GuiElementsPage;
+import com.automation.pages.AlertPage;
+import com.automation.pages.BrokenLinkPage;
+import com.automation.pages.DatePickerPage;
+import com.automation.pages.FileUploadPage;
+import com.automation.pages.FormPage;
+import com.automation.pages.MouseActionPage;
+import com.automation.pages.PopupPage;
+import com.automation.pages.TablePage;
+import com.automation.pages.WikiSearchPage;
 
 @Listeners(com.automation.listeners.TestListener.class)
 public class GuiElementsTest extends BaseTest {
@@ -16,145 +24,213 @@ public class GuiElementsTest extends BaseTest {
 	@Test
 	public void verifyGuiElementsPage() {
 
-		GuiElementsPage page = new GuiElementsPage(driver);
+		// ==========================================
+		// Page Objects
+		// ==========================================
 
-		// ==========================
+		FormPage formPage = new FormPage(driver);
+
+		DatePickerPage datePickerPage = new DatePickerPage(driver);
+
+		FileUploadPage fileUploadPage = new FileUploadPage(driver);
+
+		WikiSearchPage wiki = new WikiSearchPage(driver);
+
+		AlertPage alertPage = new AlertPage(driver);
+
+		PopupPage popupPage = new PopupPage(driver);
+
+		MouseActionPage mouseActionPage = new MouseActionPage(driver);
+
+		TablePage tablePage = new TablePage(driver);
+
+		BrokenLinkPage brokenLinkPage = new BrokenLinkPage(driver);
+
+		// ==========================================
 		// Text Fields
-		// ==========================
-		page.fillTextFields();
+		// ==========================================
+
+		formPage.fillTextFields();
 		demoPause();
 
-		Assert.assertTrue(page.isElementPresent(By.id("name")));
-		Assert.assertTrue(page.isElementPresent(By.id("email")));
-		Assert.assertTrue(page.isElementPresent(By.id("phone")));
-		Assert.assertTrue(page.isElementPresent(By.id("textarea")));
+		Assert.assertTrue(formPage.isElementPresent(By.id("name")));
 
-		// ==========================
+		Assert.assertTrue(formPage.isElementPresent(By.id("email")));
+
+		Assert.assertTrue(formPage.isElementPresent(By.id("phone")));
+
+		Assert.assertTrue(formPage.isElementPresent(By.id("textarea")));
+
+		// ==========================================
 		// Radio Button
-		// ==========================
-		page.selectGender();
+		// ==========================================
+
+		formPage.selectGender();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Checkboxes
-		// ==========================
-		page.selectDays();
+		// ==========================================
+
+		formPage.selectDays();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Dropdowns
-		// ==========================
-		page.selectDropdowns();
+		// ==========================================
+
+		formPage.selectDropdowns();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Date Pickers
-		// ==========================
-		page.enterDatePickers();
+		// ==========================================
+
+		datePickerPage.enterDatePickers();
 		demoPause();
 
-		page.selectDateRange("2026-06-10", "2026-06-20");
+		datePickerPage.selectDateRange("2026-06-10", "2026-06-20");
+
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Single File Upload
-		// ==========================
+		// ==========================================
+
 		File singleFile = new File("F:\\mySampleGUI.txt");
 
-		page.uploadSingleFile(singleFile.getAbsolutePath());
+		fileUploadPage.uploadSingleFile(singleFile.getAbsolutePath());
 
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Multiple File Upload
-		// ==========================
+		// ==========================================
+
 		File file1 = new File("F:\\mySampleGUI.txt");
 
 		File file2 = new File("F:\\mySampleGUI2.txt");
 
-		page.uploadMultipleFiles(file1.getAbsolutePath(), file2.getAbsolutePath());
+		fileUploadPage.uploadMultipleFiles(file1.getAbsolutePath(), file2.getAbsolutePath());
 
 		demoPause();
 
-		// ==========================
+		// ==========================================
+		// Wiki search
+		// ==========================================
+
+		wiki.searchAndClear("selenium");
+		demoPause();
+
+		// ==========================================
 		// Alert
-		// ==========================
-		page.openAlert();
+		// ==========================================
+
+		alertPage.openAlert();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Prompt
-		// ==========================
-		page.openPrompt();
+		// ==========================================
+
+		alertPage.openPrompt();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Confirm
-		// ==========================
-		page.openConfirm();
+		// ==========================================
+
+		alertPage.openConfirm();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Popup Window
-		// ==========================
-		page.handlePopupWindow();
+		// ==========================================
+
+		popupPage.handlePopupWindow();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Mouse Hover
-		// ==========================
-		page.mouseHoverAction();
+		// ==========================================
+
+		mouseActionPage.mouseHoverAction();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Double Click
-		// ==========================
-		page.doubleClickAction();
+		// ==========================================
+
+		mouseActionPage.doubleClickAction();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Drag And Drop
-		// ==========================
-		page.dragAndDropAction();
+		// ==========================================
+
+		mouseActionPage.dragAndDropAction();
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Slider
-		// ==========================
-		page.moveSlider();
+		// ==========================================
+
+		mouseActionPage.moveSlider();
 		demoPause();
 
-		// =========================
-		// scrolling Dropdown
-		// =========================
-		page.selectItemNumber(20);
+		// ==========================================
+		// Scrolling Dropdown
+		// ==========================================
+
+		formPage.selectItemNumber(20);
 		demoPause();
 
-		// ==========================
+		// ==========================================
 		// Broken Links
-		// ==========================
+		// ==========================================
 
-		page.verifyBrokenLinks();
-		demoPause();
-		//
-
-		page.submitSection(1, "Automation Testing");
+		brokenLinkPage.verifyBrokenLinks();
 		demoPause();
 
-		page.submitSection(2, "Selenium WebDriver");
+		// ==========================================
+		// Dynamic Sections
+		// ==========================================
+
+		formPage.submitSection(1, "Automation Testing");
+
 		demoPause();
 
-		page.submitSection(3, "TestNG Framework");
+		formPage.submitSection(2, "Selenium WebDriver");
+
 		demoPause();
 
-		page.selectProduct("Laptop");
+		formPage.submitSection(3, "TestNG Framework");
+
 		demoPause();
 
-		Assert.assertTrue(page.isProductPresent("Laptop"));
+		// ==========================================
+		// Pagination Table
+		// ==========================================
 
-		// ==========================
+		// Pagination Demo
+		tablePage.traverseAllPages();
+		demoPause();
+
+		// Print Products
+		tablePage.printAllProducts();
+		demoPause();
+
+		// Select Product
+		tablePage.selectProduct("Laptop");
+		demoPause();
+
+		// Verify Product
+		Assert.assertTrue(tablePage.isProductPresent("Laptop"));
+
+		// ==========================================
 		// Final Validation
-		// ==========================
+		// ==========================================
+
 		Assert.assertTrue(true, "GUI Elements Test Completed Successfully");
 	}
 }
