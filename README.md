@@ -221,14 +221,17 @@ mvn clean test
 
 ---
 
+## 🎥 Live Automation Demo
+
+<a href="https://youtu.be/NTak-vZ2VsA">
+    <img src="https://img.youtube.com/vi/NTak-vZ2VsA/maxresdefault.jpg" width="800">
+</a>
+
+[Watch on YouTube](https://youtu.be/NTak-vZ2VsA)
+
 ## Author
 
 **Arpan Jana**
 
 GitHub:
 https://github.com/ArpanJana2002
-
-## Live Automation Demo
-
- Full Automation Execution Video
-https://github.com/ArpanJana2002/Selenium-Gui-Automation/releases/tag/v1.0.0
