@@ -9,20 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class BaseTest {
 
 	protected WebDriver driver;
 	protected WebDriverWait wait;
 
-	// Demo delay (3 seconds)
+	// Demo delay
 	protected static final int DEMO_DELAY = 3000;
 
 	@BeforeClass
 	public void setUp() {
-
-		WebDriverManager.chromedriver().setup();
 
 		ChromeOptions options = new ChromeOptions();
 
@@ -35,10 +31,10 @@ public class BaseTest {
 
 			options.addArguments("--headless=new");
 			options.addArguments("--window-size=1920,1080");
-
 			options.addArguments("--disable-gpu");
 			options.addArguments("--no-sandbox");
 			options.addArguments("--disable-dev-shm-usage");
+
 		} else {
 
 			System.out.println("Running in Normal Browser Mode");
@@ -46,10 +42,13 @@ public class BaseTest {
 
 		driver = new ChromeDriver(options);
 
-		driver.manage().window().maximize();
-
 		driver.manage().timeouts()
 				.implicitlyWait(Duration.ofSeconds(5));
+
+		// Only maximize in non-headless mode
+		if (!headless.equalsIgnoreCase("true")) {
+			driver.manage().window().maximize();
+		}
 
 		wait = new WebDriverWait(
 				driver,
