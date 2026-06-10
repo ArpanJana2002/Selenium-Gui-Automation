@@ -31,6 +31,7 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.10.2</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- WebDriverManager -->
@@ -47,7 +48,7 @@
       <version>5.1.2</version>
     </dependency>
 
-    <!-- Commons Lang (optional, useful for utilities) -->
+    <!-- Commons Lang -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
