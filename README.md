@@ -1,5 +1,6 @@
 
 # Selenium GUI Automation Framework
+[![Selenium GUI Automation](https://github.com/ArpanJana2002/Selenium-Gui-Automation/actions/workflows/seleniumGui.yml/badge.svg)](https://github.com/ArpanJana2002/Selenium-Gui-Automation/actions/workflows/seleniumGui.yml)
 
 ## Overview
 
