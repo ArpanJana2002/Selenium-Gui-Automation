@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class BaseTest {
 
 	protected WebDriver driver;
@@ -22,11 +20,14 @@ public class BaseTest {
 	@BeforeClass
 	public void setUp() {
 
-		WebDriverManager.edgedriver().setup();
+		// Local EdgeDriver Path
+		System.setProperty(
+				"webdriver.edge.driver",
+				"C:\\Users\\wprjavanguser\\Downloads\\edgedriver_win64\\msedgedriver.exe");
 
 		EdgeOptions options = new EdgeOptions();
 
-		// Required for Jenkins
+		// Jenkins Friendly
 		options.addArguments("--headless=new");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
