@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -23,13 +24,36 @@ public class BaseTest {
 
 		WebDriverManager.chromedriver().setup();
 
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+
+		// Read system property
+		String headless = System.getProperty("headless", "false");
+
+		if (headless.equalsIgnoreCase("true")) {
+
+			System.out.println("Running in Headless Mode");
+
+			options.addArguments("--headless=new");
+			options.addArguments("--window-size=1920,1080");
+
+			options.addArguments("--disable-gpu");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
+		} else {
+
+			System.out.println("Running in Normal Browser Mode");
+		}
+
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().timeouts()
+				.implicitlyWait(Duration.ofSeconds(5));
 
-		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait = new WebDriverWait(
+				driver,
+				Duration.ofSeconds(15));
 
 		driver.get("https://testautomationpractice.blogspot.com/");
 
@@ -37,6 +61,7 @@ public class BaseTest {
 	}
 
 	protected void demoPause() {
+
 		try {
 			Thread.sleep(DEMO_DELAY);
 		} catch (InterruptedException e) {
@@ -47,7 +72,6 @@ public class BaseTest {
 	@AfterClass
 	public void tearDown() {
 
-		// Wait before closing browser
 		demoPause();
 
 		if (driver != null) {
