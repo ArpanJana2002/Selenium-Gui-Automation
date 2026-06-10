@@ -39,28 +39,34 @@ This project automates various UI components available on the Test Automation Pr
 ## Framework Architecture
 
 ```
-src/test/java
+selenium-gui-automation
 │
-├── base
-│   ├── BasePage.java
-│   └── BaseTest.java
+├── Jenkinsfile
 │
-├── pages
-│   ├── FormPage.java
-│   ├── DatePickerPage.java
-│   ├── FileUploadPage.java
-│   ├── AlertPage.java
-│   ├── PopupPage.java
-│   ├── MouseActionPage.java
-│   ├── TablePage.java
-│   ├── BrokenLinkPage.java
-│   └── WikiSearchPage.java
-│
-├── listeners
-│   └── TestListener.java
-│
-└── tests
-    └── GuiElementsTest.java
+└── src
+    └── test
+        └── java
+            │
+            ├── base
+            │   ├── BasePage.java
+            │   └── BaseTest.java
+            │
+            ├── pages
+            │   ├── FormPage.java
+            │   ├── DatePickerPage.java
+            │   ├── FileUploadPage.java
+            │   ├── AlertPage.java
+            │   ├── PopupPage.java
+            │   ├── MouseActionPage.java
+            │   ├── TablePage.java
+            │   ├── BrokenLinkPage.java
+            │   └── WikiSearchPage.java
+            │
+            ├── listeners
+            │   └── TestListener.java
+            │
+            └── tests
+                └── GuiElementsTest.java
 ```
 
 ---
@@ -192,6 +198,23 @@ mvn clean test
 ```
 
 ---
+
+## CI/CD Integration
+
+### Jenkins Pipeline
+
+Features:
+
+- GitHub Integration
+- Automated Build Trigger
+- Maven Build Execution
+- TestNG Suite Execution
+- Extent Report Publishing
+- TestNG Report Publishing
+
+Pipeline Flow:
+
+GitHub → Jenkins → Maven → TestNG → Extent Report
 
 ## Sample Automated Scenarios
 
