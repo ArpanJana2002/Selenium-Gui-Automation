@@ -3,11 +3,12 @@ package com.automation.base;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
@@ -20,41 +21,22 @@ public class BaseTest {
 	@BeforeClass
 	public void setUp() {
 
-		// EdgeDriver Path (Version 149)
-		System.setProperty(
-				"webdriver.edge.driver",
-				"C:\\Users\\wprjavanguser\\Downloads\\edgedriver_win64 (1)\\msedgedriver.exe");
+		WebDriverManager.chromedriver().setup();
 
-		System.out.println("=================================");
-		System.out.println("Starting Edge Browser...");
-		System.out.println("EdgeDriver Path: "
-				+ System.getProperty("webdriver.edge.driver"));
-		System.out.println("=================================");
+		driver = new ChromeDriver();
 
-		EdgeOptions options = new EdgeOptions();
+		driver.manage().window().maximize();
 
-		// Jenkins Headless Execution
-		options.addArguments("--headless");
-		options.addArguments("--window-size=1920,1080");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-		driver = new EdgeDriver(options);
-
-		driver.manage().timeouts()
-				.implicitlyWait(Duration.ofSeconds(5));
-
-		wait = new WebDriverWait(
-				driver,
-				Duration.ofSeconds(15));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 		driver.get("https://testautomationpractice.blogspot.com/");
-
-		System.out.println("Application Opened Successfully");
 
 		demoPause();
 	}
 
 	protected void demoPause() {
-
 		try {
 			Thread.sleep(DEMO_DELAY);
 		} catch (InterruptedException e) {
@@ -65,8 +47,7 @@ public class BaseTest {
 	@AfterClass
 	public void tearDown() {
 
-		System.out.println("Closing Browser...");
-
+		// Wait before closing browser
 		demoPause();
 
 		if (driver != null) {
