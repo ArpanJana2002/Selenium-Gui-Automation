@@ -3,7 +3,8 @@ package com.automation.base;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,17 +22,26 @@ public class BaseTest {
 	@BeforeClass
 	public void setUp() {
 
-		WebDriverManager.chromedriver().setup();
+		WebDriverManager.edgedriver().setup();
 
-		driver = new ChromeDriver();
+		EdgeOptions options = new EdgeOptions();
 
-		driver.manage().window().maximize();
+		// Required for Jenkins
+		options.addArguments("--headless=new");
+		options.addArguments("--disable-gpu");
+		options.addArguments("--window-size=1920,1080");
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver = new EdgeDriver(options);
 
-		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		driver.manage().timeouts()
+				.implicitlyWait(Duration.ofSeconds(5));
 
-		driver.get("https://testautomationpractice.blogspot.com/");
+		wait = new WebDriverWait(
+				driver,
+				Duration.ofSeconds(15));
+
+		driver.get(
+				"https://testautomationpractice.blogspot.com/");
 
 		demoPause();
 	}
@@ -47,7 +57,6 @@ public class BaseTest {
 	@AfterClass
 	public void tearDown() {
 
-		// Wait before closing browser
 		demoPause();
 
 		if (driver != null) {
