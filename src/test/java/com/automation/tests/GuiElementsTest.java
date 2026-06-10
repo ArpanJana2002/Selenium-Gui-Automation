@@ -97,7 +97,7 @@ public class GuiElementsTest extends BaseTest {
 		// Single File Upload
 		// ==========================================
 
-		File singleFile = new File("F:\\mySampleGUI.txt");
+		File singleFile = new File("src/test/resources/testdata/mySampleGUI.txt");
 
 		fileUploadPage.uploadSingleFile(singleFile.getAbsolutePath());
 
@@ -107,9 +107,9 @@ public class GuiElementsTest extends BaseTest {
 		// Multiple File Upload
 		// ==========================================
 
-		File file1 = new File("F:\\mySampleGUI.txt");
+		File file1 = new File("src/test/resources/testdata/mySampleGUI.txt");
 
-		File file2 = new File("F:\\mySampleGUI2.txt");
+		File file2 = new File("src/test/resources/testdata/mySampleGUI2.txt");
 
 		fileUploadPage.uploadMultipleFiles(file1.getAbsolutePath(), file2.getAbsolutePath());
 
