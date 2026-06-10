@@ -14,31 +14,27 @@ public class BaseTest {
 	protected WebDriver driver;
 	protected WebDriverWait wait;
 
-	// Demo delay
+	// Demo delay (3 seconds)
 	protected static final int DEMO_DELAY = 3000;
 
 	@BeforeClass
 	public void setUp() {
 
-		// EdgeDriver Location
+		// EdgeDriver Path (Version 149)
 		System.setProperty(
 				"webdriver.edge.driver",
-				"C:\\Users\\wprjavanguser\\Downloads\\edgedriver_win64\\msedgedriver.exe");
+				"C:\\Users\\wprjavanguser\\Downloads\\edgedriver_win64 (1)\\msedgedriver.exe");
 
+		System.out.println("=================================");
 		System.out.println("Starting Edge Browser...");
-		System.out.println("EdgeDriver Path = "
+		System.out.println("EdgeDriver Path: "
 				+ System.getProperty("webdriver.edge.driver"));
+		System.out.println("=================================");
 
 		EdgeOptions options = new EdgeOptions();
 
-		// Jenkins Safe Options
-		options.addArguments("--headless=new");
-		options.addArguments("--disable-gpu");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--disable-extensions");
-		options.addArguments("--disable-infobars");
-		options.addArguments("--remote-allow-origins=*");
+		// Jenkins Headless Execution
+		options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
 
 		driver = new EdgeDriver(options);
@@ -58,6 +54,7 @@ public class BaseTest {
 	}
 
 	protected void demoPause() {
+
 		try {
 			Thread.sleep(DEMO_DELAY);
 		} catch (InterruptedException e) {
