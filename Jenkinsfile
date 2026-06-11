@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK21'
+        maven 'Maven3'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -12,15 +17,16 @@ pipeline {
             }
         }
 
-        stage('Verify Maven') {
+        stage('Verify Tools') {
             steps {
-                bat '"C:\\Program Files\\Apache\\apache-maven-3.9.16\\bin\\mvn.cmd" -version'
+                bat 'java -version'
+                bat 'mvn -version'
             }
         }
 
         stage('Build & Test') {
             steps {
-                bat '"C:\\Program Files\\Apache\\apache-maven-3.9.16\\bin\\mvn.cmd" clean test -Dheadless=true'
+                bat 'mvn clean test -Dheadless=true'
             }
         }
     }
