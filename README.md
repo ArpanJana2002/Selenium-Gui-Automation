@@ -139,26 +139,29 @@ Generated automatically after execution.
 Location:
 
 ```
-reports/ExtentReport.html
+test-output/ExtentReport.html
 ```
 
 ## Screenshots
 
 ```text
-screenshot
+Screenshots
 │
-├── console-output1
+├── Console Output
 │   ├── CO1.png
 │   ├── CO2.png
 │   └── CO3.png
 │
-├── extent-report1
+├── Extent Report
 │   ├── ETR1.png
-│   ├── ETR2.png
-│   
+│   └── ETR2.png
 │
-└── emailable-report1
-    ├── ER1.png
+├── Emailable Report
+│   └── ER1.png
+│
+└── CI-CD 
+    ├── CI_CD_1.png
+    └── CI_CD_2.png
    
 ```
 
